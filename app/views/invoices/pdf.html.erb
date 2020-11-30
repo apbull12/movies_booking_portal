@@ -1,0 +1,31 @@
+<div class="invoice">
+  <h1>Movie Ticket Booking Invoice</h1>
+
+  <h3>Name: <%= invoice.name %></h3>
+  <h3>Email: <%= invoice.email %></h3>
+  <h3>Date: <%= Date.today %></h3>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Seats Booked</th>
+      <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= invoice.booked_seats %></td>
+        <td>Rs <%= invoice.amount %>/-</td>
+      </tr>
+    <tr class="total">
+      <td style="text-align: right">Total: </td>
+      <td>Rs <%= invoice.amount %>/-</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <p><strong>Notes:</strong> Please Check our Movie tickets cancellation Policy before canceling the ticket.  </p>
+  </div>
+
+</div>

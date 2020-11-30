@@ -9,6 +9,17 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
+
+
+gem 'pdfkit'
+gem 'render_anywhere'
+gem 'wkhtmltopdf-binary'
+
+# Add to Gemfile
+gem 'bcrypt'
+# For data attrs*
+gem 'pry-rails'
+gem 'pry'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker

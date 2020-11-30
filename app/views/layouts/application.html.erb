@@ -4,12 +4,29 @@
     <title>BookingPortal</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+  <div class="navbar">
+    <a href="/" class="logo" style="float: left"> Booking Portal</a>
+    <% if current_admin %>
+      <%= link_to 'Log Out', logout_path %>
+      <%= link_to 'Bookings', booking_show_path %>
+      <%= link_to 'Screens', screenings_path %>
+      <%= link_to 'Shows', shows_path %>
+      <%= link_to 'Movies', movies_path %>
+    <% else %>
+      <%= link_to 'Sign Up', signup_path %><%= link_to 'Log In', login_path %>
+    <% end %>
+  </div>
+  <p id=”notice”><%= notice %></p>
+  <div class="main-content">
     <%= yield %>
+  </div>
   </body>
+
 </html>

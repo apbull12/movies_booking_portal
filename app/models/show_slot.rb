@@ -1,0 +1,2 @@
+class ShowSlot < ApplicationRecord
+end

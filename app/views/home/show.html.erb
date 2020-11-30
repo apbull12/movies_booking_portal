@@ -1,0 +1,26 @@
+<% if !current_admin.present? %>
+  <div>
+    <h2> Currently Showing Movies | Total <%= @screenings.count %></h2>
+    <hr>
+  </div>
+  <div>
+    <% @screenings.each do |screening| %>
+      <div class="row" id=<%= screening.show_id %>>
+        <% summary = get_show_details(screening.show_id) %>
+        <div class="column">
+          <div class="card">
+            <h2>
+              <p>Movie: <%= summary[:movie_name] %></p>
+              <p>Date: <%= summary[:date] %></p>
+              <p>Slots: <%= summary[:slot] %></p>
+            </h2>
+            <h2 style="color: #4CAF50;">Available Seats - <%= get_available_seats_count(screening)%></h2>
+            <%= button_to "Book Now",  "booking/#{screening.id}", :method => :post, class: 'button button2'%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+<% end %>
+
