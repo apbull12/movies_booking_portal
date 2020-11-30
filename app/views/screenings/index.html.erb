@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Screenings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Show</th>
+      <th>Rows</th>
+      <th>Total Seats</th>
+      <th>Remaining Seats</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @screenings.each do |screening| %>
+      <tr>
+        <td><%= get_show_summary(screening.show_id) %></td>
+        <td><%= screening.rows %></td>
+        <td><%= screening.total_seats %></td>
+        <td><%= (screening.total_seats - screening.reserved_seats.count) %></td>
+        <td><%= link_to 'Show', screening %></td>
+        <td><%= link_to 'Edit', edit_screening_path(screening) %></td>
+        <td><%= link_to 'Destroy', screening, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Screening', new_screening_path %>

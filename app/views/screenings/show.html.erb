@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Show:</strong>
+  <%= @screening.show_id %>
+</p>
+
+<p>
+  <strong>Rows:</strong>
+  <%= @screening.rows %>
+</p>
+
+<p>
+  <strong>Total seats:</strong>
+  <%= @screening.total_seats %>
+</p>
+
+<p>
+  <strong>Reserved seats:</strong>
+  <%= @screening.reserved_seats %>
+</p>
+
+<%= link_to 'Edit', edit_screening_path(@screening) %> |
+<%= link_to 'Back', screenings_path %>

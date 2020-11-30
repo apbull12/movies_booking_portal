@@ -1,0 +1,37 @@
+<%= form_with(model: screening, local: true) do |form| %>
+  <% if screening.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(screening.errors.count, "error") %> prohibited this screening from being saved:</h2>
+
+      <ul>
+        <% screening.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :show_id %>
+    <%= form.collection_select :show_id, Show.order(:show_date),:id,:id, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rows %>
+    <%= form.number_field :rows %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_seats %>
+    <%= form.number_field :total_seats %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reserved_seats %>
+    <%= form.text_field :reserved_seats %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

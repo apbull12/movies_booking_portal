@@ -1,0 +1,38 @@
+<%= form_with(model: show, local: true) do |form| %>
+  <% if show.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(show.errors.count, "error") %> prohibited this show from being saved:</h2>
+
+      <ul>
+        <% show.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :movie_id %>
+    <%#= form.number_field :movie_id %>
+    <%= form.collection_select :movie_id, Movie.order(:name),:id,:name, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :show_date %>
+    <%= form.date_select :show_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :show_slot %>
+    <%= form.collection_check_boxes :show_slot, ShowSlot.all, :timings, :timings do |b| %>
+      <div style="display: inline-block">
+        <%= b.check_box %>
+        <%= b.label %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

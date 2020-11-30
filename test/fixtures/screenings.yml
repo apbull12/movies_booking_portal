@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  show_id: 1
+  rows: 1
+  total_seats: 1
+  reserved_seats: 
+
+two:
+  show_id: 1
+  rows: 1
+  total_seats: 1
+  reserved_seats: 
