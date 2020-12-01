@@ -1,9 +1,4 @@
 class BookingController < ApplicationController
-  def index
-  end
-
-  def new
-  end
 
   def show
     @bookings = Booking.order(created_at: :desc)
@@ -13,8 +8,12 @@ class BookingController < ApplicationController
     @bookings = Booking.order(created_at: :desc)
 
     respond_to do |format|
-      format.html
-      format.csv { send_data @bookings.to_csv, filename: "bookings-#{Date.today}.csv" }
+      if @bookings.present?
+        format.html
+        format.csv { send_data @bookings.to_csv, filename: "bookings-#{Date.today}.csv" }
+      else
+        format.html { redirect_to @bookings, notice: 'No records to export!!' }
+      end
     end
   end
 

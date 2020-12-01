@@ -3,6 +3,10 @@ class Booking < ApplicationRecord
   belongs_to :screening
 
   after_commit :update_screening
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :mobile_number, presence: true
+  validates :booked_seats, presence: true
 
   def update_screening
     screen = Screening.find_by(id: screening_id)

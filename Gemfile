@@ -10,7 +10,6 @@ gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 
-
 gem 'pdfkit'
 gem 'render_anywhere'
 gem 'wkhtmltopdf-binary'
@@ -18,8 +17,7 @@ gem 'wkhtmltopdf-binary'
 # Add to Gemfile
 gem 'bcrypt'
 # For data attrs*
-gem 'pry-rails'
-gem 'pry'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -50,6 +48,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rspec-rails'
+  gem 'rspec-html-matchers'
+  gem 'rspec-junit', '~> 0.1.2'
+  gem 'rspec_junit_formatter'
 end
 
 group :test do
@@ -58,7 +60,11 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'database_cleaner-active_record'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'pry-rails'
+gem 'pry'

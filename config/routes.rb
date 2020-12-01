@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   get 'booking/:id/invoice/download', to: 'booking#send_invoice_pdf'
 
-  get 'booking/index'
-  get 'booking/new'
   get 'booking/show'
   get 'booking/export.csv', to: 'booking#download_as_csv', as: 'booking_export'
   post 'booking/:screen_id', to: 'home#booking', as: 'booking'
