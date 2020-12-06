@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+slots = %w[12-3 4-7 8-11]
+slots.each do |slot|
+  ShowSlot.create!(timings: slot)
+end

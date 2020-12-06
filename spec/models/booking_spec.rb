@@ -7,10 +7,15 @@ RSpec.describe Booking, type: :model do
     Show.delete_all
     Screening.delete_all
     Booking.delete_all
+    ShowSlot.delete_all
+    slots = %w[12-3 4-7 8-11]
+    slots.each do |slot|
+      ShowSlot.create!(timings: slot)
+    end
     @movie = Movie.create!({"id"=>33,"name"=>"XYZ", "category"=>"Drama","description"=> "about movie","status"=> true})
     @show = Show.create!({"movie_id"=>@movie.id, "show_date"=> Time.now + 2.days, "show_slot"=> %w[12-3 4-7 8-11]})
     @screening = Screening.create!({"show_id"=>@show.id, "rows"=>10, "total_seats"=>100, "reserved_seats"=>[1, 2, 13, 14, 15, 16, 17, 18, 19, 20]})
-    @booking = Booking.new({"screening_id"=>@screening.id, "name"=>"sahendra", "email"=>"sahi@gmail.com", "mobile_number"=>"987452136", "booked_seats"=>[21, 22, 23], "amount"=> 450})
+    @booking = Booking.new({"screening_id"=>@screening.id, "show_slot_id"=>ShowSlot.first.id, "name"=>"sahendra", "email"=>"sahi@gmail.com", "mobile_number"=>"987452136", "booked_seats"=>[21, 22, 23], "amount"=> 450})
   end
 
   after(:all) do
@@ -46,7 +51,7 @@ RSpec.describe Booking, type: :model do
 
   context 'callback test cases' do
     it "update the screening seats based on booked seats" do
-      @booking = Booking.create!({"screening_id"=>@screening.id, "name"=>"sahendra", "email"=>"sahi@gmail.com", "mobile_number"=>"987452136", "booked_seats"=>[21, 22, 23], "amount"=> 450})
+      @booking = Booking.create!({"screening_id"=>@screening.id, "show_slot_id"=>ShowSlot.first.id, "name"=>"sahendra", "email"=>"sahi@gmail.com", "mobile_number"=>"987452136", "booked_seats"=>[21, 22, 23], "amount"=> 450})
       expect(@booking).to receive(:update_screening)
       @booking.run_callbacks(:commit)
     end

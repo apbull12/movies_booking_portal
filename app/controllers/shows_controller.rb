@@ -27,7 +27,6 @@ class ShowsController < ApplicationController
   def create
     @show = Show.new(show_params)
 
-    binding.pry
     respond_to do |format|
       if @show.save
         format.html { redirect_to @show, notice: 'Show was successfully created.' }

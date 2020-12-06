@@ -1,6 +1,7 @@
 require 'csv'
 class Booking < ApplicationRecord
   belongs_to :screening
+  belongs_to :show_slot
 
   after_commit :update_screening
   validates :name, presence: true

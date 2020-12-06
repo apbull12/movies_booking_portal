@@ -1,10 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <h1>All Bookings | Total - <%=@bookings.count %> <a href="/booking/export.csv"><button class="button button2">Export All</button></a></h1>
+<h2>Filters: Based on Screening and Show Slots</h2>
 
 <table>
   <thead>
   <tr>
+    <th>Screen ID</th>
+    <th>Booked Slot</th>
     <th>Booking ID</th>
     <th>Name</th>
     <th>Email</th>
@@ -20,6 +23,8 @@
   <tbody>
   <% @bookings.each do |booking| %>
     <tr>
+      <td><%= booking.screening_id %></td>
+      <td><%= booking.show_slot.timings %></td>
       <td><%= booking.id %></td>
       <td><%= booking.name %></td>
       <td><%= booking.email %></td>
